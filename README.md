@@ -16,12 +16,12 @@ var totpSecretKey = totp2FA.generateNewTotpSecretKey();
 ```
 Если же нам надо сгенерировать серкретный ключ полученый от пользователя то вызываем следующий метод:
 ```C#
-//Получение byte[] нового ключа, string userTotpKey - ключ от пользователя
+//Получение byte[] нового ключа, string userTotpKey
 var totpUserSecretKey = totp2FA.generateUserTotpSecretKey(userTotpKey); 
 ```
 После этого можно получить ключ который должен использовать пользователь:
 ```C#
-//Получение string ключа, из созданого нами, или хранимого от пользователя, byte [] totpBytes - отпраляемый ключ
+//Получение string ключа, из созданого нами, или хранимого от пользователя, byte [] totpBytes 
 string totpUserKey = totp2FA.getStringTotpKey(totpBytes); 
 ```
 ***
