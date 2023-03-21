@@ -53,3 +53,19 @@ string totpNumbers = totp2FA.getTotpNumbers(totpString)
 string totpNumbers = totp2FA.getTotpNumbers(totp)
 ```
 ***
+## Проверка кода с totp
+Для получения bool результата сравнения введенных пользовтелем цифр, с значением которое должно получится в нашем TOTP мы можем использовать 1 из 3-х методов, имеющие разные пердаваемые параметры string, byte[] или Totp и второй параметр string:
+```C#
+//Получение bool результата проверки кодов, при параметрах byte[] totpBytes и string userCode
+bool totpAuthResult = totp2FA.verifyTotp(totpBytes, userCode)
+```
+
+```C#
+//Получение bool результата проверки кодов, при параметрах byte[] totpBytes и string userCode
+bool totpAuthResult = totp2FA.verifyTotp(totpString, userCode)
+```
+```C#
+//Получение bool результата проверки кодов, при параметрах byte[] totpBytes и string userCode
+bool totpAuthResult = totp2FA.verifyTotp(totp, userCode)
+```
+***
