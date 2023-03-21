@@ -29,43 +29,43 @@ string totpUserKey = totp2FA.getStringTotpKey(totpBytes);
 Для получения TOTP мы можем использовать 1 из 2-х методов, имеющие разные пердаваемые параметры string или byte[]:
 ```C#
 //Получение Totp, при параметрах byte[] totpBytes
-var totp = totp2FA.GetTotp(totpBytes)
+var totp = totp2FA.GetTotp(totpBytes);
 ```
 
 ```C#
 //Получение Totp, при параметрах string totpString
-var totp = totp2FA.GetTotp(totpString)
+var totp = totp2FA.GetTotp(totpString);
 ```
 ***
 ## Получение Цифр из TOTP выдаваемых пользователю
 Для получения TOTP цифр мы можем использовать 1 из 3-х методов, имеющие разные пердаваемые параметры string, byte[] или Totp:
 ```C#
 //Получение string totp цифр, при параметрах byte[] totpBytes
-string totpNumbers = totp2FA.getTotpNumbers(totpBytes)
+string totpNumbers = totp2FA.getTotpNumbers(totpBytes);
 ```
 
 ```C#
 //Получение string totp цифр, при параметрах string totpString
-string totpNumbers = totp2FA.getTotpNumbers(totpString)
+string totpNumbers = totp2FA.getTotpNumbers(totpString);
 ```
 ```C#
 //Получение string totp цифр, при параметрах Totp totp
-string totpNumbers = totp2FA.getTotpNumbers(totp)
+string totpNumbers = totp2FA.getTotpNumbers(totp);
 ```
 ***
 ## Проверка кода с totp
 Для получения bool результата сравнения введенных пользовтелем цифр, с значением которое должно получится в нашем TOTP мы можем использовать 1 из 3-х методов, имеющие разные пердаваемые параметры string, byte[] или Totp и второй параметр string:
 ```C#
 //Получение bool результата проверки кодов, при параметрах byte[] totpBytes и string userCode
-bool totpAuthResult = totp2FA.verifyTotp(totpBytes, userCode)
+bool totpAuthResult = totp2FA.verifyTotp(totpBytes, userCode);
 ```
 
 ```C#
 //Получение bool результата проверки кодов, при параметрах byte[] totpBytes и string userCode
-bool totpAuthResult = totp2FA.verifyTotp(totpString, userCode)
+bool totpAuthResult = totp2FA.verifyTotp(totpString, userCode);
 ```
 ```C#
 //Получение bool результата проверки кодов, при параметрах byte[] totpBytes и string userCode
-bool totpAuthResult = totp2FA.verifyTotp(totp, userCode)
+bool totpAuthResult = totp2FA.verifyTotp(totp, userCode);
 ```
 ***
