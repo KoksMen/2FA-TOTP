@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examples
+namespace KoksOtpNet
 {
     public static class totp2FA
     {
