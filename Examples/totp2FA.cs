@@ -1,4 +1,4 @@
-﻿using OtpNet;
+using OtpNet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +9,20 @@ namespace KoksOtpNet
 {
     public static class totp2FA
     {
+        #region TotpSecretKey
         public static byte[] generateNewTotpSecretKey()
         {
             var totpKey = KeyGeneration.GenerateRandomKey(30);
             return totpKey;
         }
 
-        public static byte[] generateUserTotpSecretKey(string userTotpKey) 
+        public static byte[] generateUserTotpSecretKey(string userTotpKey)
         {
             userTotpKey.Replace(" ", "");
             var totpKey = OtpNet.Base32Encoding.ToBytes(userTotpKey);
             return totpKey;
-        }
+        } 
+        #endregion
 
         public static string getStringTotpKey(byte[] totpBytes)
         {
@@ -28,7 +30,8 @@ namespace KoksOtpNet
             return totpStringKey;
         }
 
-        public static Totp GetTotp(byte[] totpBytes) 
+        #region Totp
+        public static Totp GetTotp(byte[] totpBytes)
         {
             var totp = new Totp(totpBytes, step: 30);
             return totp;
@@ -37,8 +40,10 @@ namespace KoksOtpNet
         {
             var totpBytes = generateUserTotpSecretKey(totpString);
             return GetTotp(totpBytes);
-        }
+        } 
+        #endregion
 
+        #region TotpNumbers
         public static string getTotpNumbers(byte[] totpBytes)
         {
             var totp = GetTotp(totpBytes);
@@ -52,7 +57,10 @@ namespace KoksOtpNet
         {
             var totp = GetTotp(totpString);
             return totp.ComputeTotp();
-        }
+        } 
+        #endregion
+
+        #region TotpVerify
         public static bool verifyTotp(byte[] totpBytes, string userCode)
         {
             Totp totp = GetTotp(totpBytes);
@@ -68,5 +76,23 @@ namespace KoksOtpNet
             bool verifyResult = totp.VerifyTotp(userCode, out long time);
             return verifyResult;
         }
+        #endregion
+
+        #region TotpSeconds
+        public static int getTotpSeconds(byte[] totpBytes)
+        {
+            var totp = GetTotp(totpBytes);
+            return totp.RemainingSeconds();
+        }
+        public static int getTotpSeconds(Totp totp)
+        {
+            return totp.RemainingSeconds();
+        }
+        public static int getTotpSeconds(string totpString)
+        {
+            var totp = GetTotp(totpString);
+            return totp.RemainingSeconds();
+        } 
+        #endregion
     }
 }
