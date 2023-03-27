@@ -61,11 +61,27 @@ bool totpAuthResult = totp2FA.verifyTotp(totpBytes, userCode);
 ```
 
 ```C#
-//Получение bool результата проверки кодов, при параметрах byte[] totpBytes и string userCode
+//Получение bool результата проверки кодов, при параметрах string totpString и string userCode
 bool totpAuthResult = totp2FA.verifyTotp(totpString, userCode);
 ```
 ```C#
-//Получение bool результата проверки кодов, при параметрах byte[] totpBytes и string userCode
+//Получение bool результата проверки кодов, при параметрах Totp totp и string userCode
 bool totpAuthResult = totp2FA.verifyTotp(totp, userCode);
+```
+***
+## Получение int оставшегося времени для обновления кода totp
+Для получения `int` оставщегося времени, до обновления цифр кода в нашем TOTP мы можем использовать 1 из 3-х методов, имеющие разные пердаваемые параметры `string`, `byte[]` или `Totp`:
+```C#
+////Получение int количества секунд оставшихся, до обновления кода при параметрах byte[] totpBytes 
+int updateTotpSeconds = totp2FA.getTotpSeconds(totpBytes);
+```
+
+```C#
+////Получение int количества секунд оставшихся, до обновления кода при параметрах string totpString
+int updateTotpSeconds = totp2FA.getTotpSeconds(totpString);
+```
+```C#
+////Получение int количества секунд оставшихся, до обновления кода при параметрах Totp totp 
+int updateTotpSeconds = totp2FA.getTotpSeconds(totp);
 ```
 ***
