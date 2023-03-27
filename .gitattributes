@@ -1,5 +1,6 @@
 Examples/* linguist-documentation=false
 Examples/* linguist-vendored=false
+*.rb linguist-language=СSHARP
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
