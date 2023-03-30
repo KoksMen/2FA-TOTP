@@ -10,12 +10,21 @@ namespace KoksOtpNet
     public static class totp2FA
     {
         #region TotpSecretKey
+        /// <summary>
+        /// Return byte [] Totp secret key, generate from program key
+        /// </summary>
+        /// <returns></returns>
         public static byte[] generateNewTotpSecretKey()
         {
             var totpKey = KeyGeneration.GenerateRandomKey(30);
             return totpKey;
         }
 
+        /// <summary>
+        /// Return byte [] Totp secret key, generated from user key
+        /// </summary>
+        /// <param name="userTotpKey"></param>
+        /// <returns></returns>
         public static byte[] generateUserTotpSecretKey(string userTotpKey)
         {
             userTotpKey.Replace(" ", "");
@@ -23,6 +32,7 @@ namespace KoksOtpNet
             return totpKey;
         } 
         #endregion
+
 
         public static string getStringTotpKey(byte[] totpBytes)
         {
